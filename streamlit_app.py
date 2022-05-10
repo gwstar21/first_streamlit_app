@@ -44,19 +44,6 @@ try:
 except URLError as e:
   streamlit.error()
 
-# Don't run anything past here while we troubleshoot
-streamlit.stop()
-
-#import snowflake.connector
-
-
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * FROM FRUIT_LOAD_LIST")
-my_data_rows = my_cur.fetchall()
-streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)
-
-
 # Allow the end user to add a fruit to the list
 def insert_row_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
